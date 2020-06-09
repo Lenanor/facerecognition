@@ -1,0 +1,15 @@
+.navLink {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 10px;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home > .nav {
+  width: 100%;
+}

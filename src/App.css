@@ -2,37 +2,80 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  padding: 15px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.home {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.logo-form-wrap {
+  align-items: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 85vh;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 0 auto;
+  width: 70vw;
 }
 
-.App-link {
-  color: #61dafb;
+.flexItem {
+  width: 85vw;
+  margin: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (orientation: landscape) {
+  .logo-form-wrap {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
-  to {
-    transform: rotate(360deg);
+  .flexItem {
+    width: 35vw;
   }
+}
+
+@media only screen and (min-width: 767px) {
+  .logo-form-wrap {
+    height: 85vh;
+  }
+  .flexItem {
+    width: 65vw;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .logo-form-wrap {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 85vh;
+  }
+
+  .flexItem {
+    min-height: 300px;
+    width: 35vw;
+  }
+}
+
+* {
+  border: dotted 1px black;
 }

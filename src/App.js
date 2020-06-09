@@ -1,26 +1,155 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Particles from "react-particles-js";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Navigation from "./components/Navigation/Navigation";
+import Logo from "./components/Logo/Logo";
+import Rank from "./components/Rank/Rank";
+import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
+import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
+import SignIn from "./components/SignIn/SignIn";
+import Registrer from "./components/Register/Register";
+
+import particlesParams from "./particlesConfig.json";
+
+import "./App.css";
+
+const initialState = {
+  input: "",
+  imgUrl: "",
+  box: {},
+  route: "signin",
+  isSignedIn: false,
+  user: {
+    id: "",
+    name: "",
+    email: "",
+    password: "",
+    entries: 0,
+    joined: new Date(),
+  },
+};
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = initialState;
+  }
+
+  loadUser = (data) => {
+    this.setState({
+      user: data,
+    });
+  };
+
+  calcFaceLocation = (data) => {
+    const faceBox = data.outputs[0].data.regions[0].region_info.bounding_box;
+    const image = document.getElementById("faceRecognitionPhoto");
+    const width = Number(image.width);
+    const height = Number(image.height);
+
+    return {
+      leftCol: faceBox.left_col * width,
+      topRow: height * faceBox.top_row,
+      rightCol: width - width * faceBox.right_col,
+      bottomRow: height - height * faceBox.bottom_row,
+    };
+  };
+
+  displayBox = (box) => this.setState({ box });
+
+  onInputChange = (e) => {
+    this.setState({ input: e.target.value });
+  };
+
+  onPictureSubmit = (e) => {
+    this.setState({ imgUrl: this.state.input });
+    this.setState({ input: "" });
+    this.setState({ box: {} });
+
+    fetch("http://localhost:3000/imageurl", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        input: this.state.input,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response) {
+          fetch("http://localhost:3000/image", {
+            method: "put",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id: this.state.user.id,
+            }),
+          })
+            .then((res) => res.json())
+            .then((count) =>
+              this.setState({
+                user: Object.assign(this.state.user, { entries: count }),
+              })
+            );
+        }
+        this.displayBox(this.calcFaceLocation(response));
+      })
+      .catch((err) => console.log(err));
+  };
+
+  onRouteChange = (route) => {
+    if (route === "signout") {
+      this.setState(initialState);
+    } else if (route === "home") {
+      this.setState({ isSignedIn: true });
+    }
+
+    this.setState({ route: route });
+  };
+
+  render() {
+    const { isSignedIn, route, imgUrl, box, input } = this.state;
+    const { name, entries } = this.state.user;
+    console.log(route);
+    return (
+      <div className='App'>
+        <Particles className='particles' params={particlesParams} />
+        <div className={route === "home" ? "home" : "signin"}>
+          {route === "home" ? <Logo /> : null}
+          <Navigation
+            onRouteChange={this.onRouteChange}
+            isSignedIn={isSignedIn}
+          />
+        </div>
+        <div className={route !== "home" ? "logo-form-wrap" : "content-wrap"}>
+          {route !== "home" ? <Logo /> : null}
+          {route !== "home" ? (
+            route === "signin" || route === "signout" ? (
+              <SignIn
+                onRouteChange={this.onRouteChange}
+                loadUser={this.loadUser}
+              />
+            ) : (
+              <Registrer
+                loadUser={this.loadUser}
+                onRouteChange={this.onRouteChange}
+              />
+            )
+          ) : (
+            <React.Fragment>
+              <Rank name={name} entries={entries} />
+              <div>
+                <ImageLinkForm
+                  onInputChange={this.onInputChange}
+                  onPictureSubmit={this.onPictureSubmit}
+                  value={input}
+                />
+                <FaceRecognition imgUrl={imgUrl} box={box} />
+              </div>
+            </React.Fragment>
+          )}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

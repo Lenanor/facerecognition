@@ -1,0 +1,16 @@
+.home > .flexItem {
+  width: 35vw;
+  padding: 26px 0;
+  text-align: start;
+  min-height: 146px;
+}
+
+@media only screen and (min-width: 1025px) {
+  .monkeyLogo {
+    width: 280px;
+  }
+  .home .monkeyLogo {
+    width: 146px;
+    text-align: start;
+  }
+}

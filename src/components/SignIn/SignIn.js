@@ -21,7 +21,7 @@ class SignIn extends Component {
 
   onSubmit = () => {
     const { email, password } = this.state;
-    fetch("http://localhost:3000/signin", {
+    fetch("https://damp-citadel-21440.herokuapp.com/signin", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

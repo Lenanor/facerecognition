@@ -5,7 +5,9 @@ import "./ImageLinkForm.css";
 const ImageLinkForm = ({ onPictureSubmit, onInputChange, value }) => {
   return (
     <div className='searchContainer'>
-      <label htmlFor='text'>BildURL</label>
+      <label className='inputLabel' htmlFor='text'>
+        BildURL
+      </label>
       <div className='InputWrap'>
         <input
           type='text'

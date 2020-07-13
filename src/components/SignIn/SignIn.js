@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import styles from "./SignIn.module.css";
+import "./SignIn.css";
 
 class SignIn extends Component {
   constructor(props) {
@@ -46,26 +46,26 @@ class SignIn extends Component {
     return (
       <article className='flexItem'>
         <main>
-          <fieldset className={styles.sign_in}>
-            <legend className={styles.legend}>Logga in</legend>
-            <div className={styles.inputWrap}>
-              <label className={styles.label} htmlFor='email-address'>
+          <fieldset className='sign_in'>
+            <legend className='legend'>Logga in</legend>
+            <div className='inputWrap'>
+              <label className='label' htmlFor='email-address'>
                 Email
               </label>
               <input
-                className={styles.textInput}
+                className='textInput'
                 type='email'
                 name='email-address'
                 id='email-address'
                 onChange={this.onChangeEmail}
               />
             </div>
-            <div className={styles.inputWrap}>
-              <label className={styles.label} htmlFor='password'>
+            <div className='inputWrap'>
+              <label className='label' htmlFor='password'>
                 Lösenord
               </label>
               <input
-                className={styles.textInput}
+                className='textInput'
                 type='password'
                 name='password'
                 id='password'
@@ -78,17 +78,17 @@ class SignIn extends Component {
           ) : (
             ""
           )}
-          <div className={styles.submitButtonWrap}>
+          <div className='submitButtonWrap'>
             <input
-              className={styles.submitButton}
+              className='submitButton'
               type='submit'
               value='Logga in'
               onClick={this.onSubmit}
             />
           </div>
-          <div className={styles.signinTextWrap}>
+          <div className='signinTextWrap'>
             <button
-              className={styles.submitButton}
+              className='submitButton'
               onClick={() => onRouteChange("register")}
             >
               Skapa konto

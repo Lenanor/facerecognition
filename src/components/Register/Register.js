@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import styles from "./Register.module.css";
+import "./Register.css";
 
 class Registrer extends Component {
   constructor(props) {
@@ -49,38 +49,38 @@ class Registrer extends Component {
     return (
       <article className='flexItem'>
         <main>
-          <fieldset className={styles.sign_up}>
-            <legend className={styles.legend}>Skapa konto</legend>
-            <div className={styles.inputWrap}>
-              <label className={styles.label} htmlFor='email-address'>
+          <fieldset className='sign_up'>
+            <legend className='legend'>Skapa konto</legend>
+            <div className='inputWrap'>
+              <label className='label' htmlFor='email-address'>
                 Namn
               </label>
               <input
-                className={styles.textInput}
+                className='textInput'
                 type='name'
                 name='name'
                 id='name'
                 onChange={this.onNameChange}
               />
             </div>
-            <div className={styles.inputWrap}>
-              <label className={styles.label} htmlFor='email-address'>
+            <div className='inputWrap'>
+              <label className='label' htmlFor='email-address'>
                 Email
               </label>
               <input
-                className={styles.textInput}
+                className='textInput'
                 type='email'
                 name='email-address'
                 id='email-address'
                 onChange={this.onEmailChange}
               />
             </div>
-            <div className={styles.inputWrap}>
-              <label className={styles.label} htmlFor='password'>
+            <div className='inputWrap'>
+              <label className='label' htmlFor='password'>
                 Lösenord
               </label>
               <input
-                className={styles.textInput}
+                className='textInput'
                 type='password'
                 name='password'
                 id='password'
@@ -88,9 +88,9 @@ class Registrer extends Component {
               />
             </div>
           </fieldset>
-          <div className={styles.submitButtonWrap}>
+          <div className='submitButtonWrap'>
             <input
-              className={styles.submitButton}
+              className='submitButton'
               type='submit'
               value='Skapa konto'
               onClick={this.onRegisterSubmit}

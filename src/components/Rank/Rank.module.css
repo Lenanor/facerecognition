@@ -1,0 +1,28 @@
+.bigBlueText,
+.bigNumber {
+  color: blue;
+}
+
+.emoi {
+  font-size: 3.5rem;
+}
+
+.bigBlueText {
+  font-size: 2rem;
+}
+
+.smallBlueText {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.bigNumber {
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin: 1rem;
+}
+
+.textWrap {
+  line-height: 1.5;
+  color: #fff;
+}

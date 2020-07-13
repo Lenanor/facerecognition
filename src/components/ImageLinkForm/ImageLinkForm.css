@@ -1,7 +1,12 @@
-.urlInput-wrap {
+.InputWrap {
   display: grid;
   grid-template-columns: 4fr 1fr;
   grid-gap: 30px;
+  padding: 5px 0 30px;
+}
+
+.contentWrap .searchContainer {
+  text-align: left;
 }
 
 .textInput {
@@ -13,8 +18,11 @@
   border-color: #fff;
   background-color: transparent !important;
   width: 90%;
-  color: #fff !important;
   font-size: 1rem;
+}
+
+input[type="text"].textInput::-webkit-input-placeholder {
+  color: #fff;
 }
 
 .textInput::-moz-focus-inner {
@@ -48,6 +56,13 @@
   transition: transform 0.25s ease-out;
   font-size: 0.875rem;
   display: inline-block;
+  background-color: #072e71;
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent;
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-family: Menlo, sans-serif;
 }
 
 .submitButton::-moz-focus-inner {

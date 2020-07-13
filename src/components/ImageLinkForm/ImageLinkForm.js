@@ -4,13 +4,13 @@ import "./ImageLinkForm.css";
 
 const ImageLinkForm = ({ onPictureSubmit, onInputChange, value }) => {
   return (
-    <div>
-      <div className='urlInput-wrap'>
+    <div className='searchContainer'>
+      <label htmlFor='text'>BildURL</label>
+      <div className='InputWrap'>
         <input
           type='text'
           onChange={onInputChange}
           value={value}
-          placeholder='Skriv in url till bilden här'
           className='textInput'
         />
         <button onClick={onPictureSubmit} className='submitButton'>

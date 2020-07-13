@@ -40,12 +40,14 @@ class App extends React.Component {
       user: data,
     });
   };
-
+  // Get the Clarifai data for ONE face (todo: make it work for several faces!)
   calcFaceLocation = (data) => {
     const faceBox = data.outputs[0].data.regions[0].region_info.bounding_box;
+
     const image = document.getElementById("faceRecognitionPhoto");
     const width = Number(image.width);
     const height = Number(image.height);
+    console.log(width, height);
 
     return {
       leftCol: faceBox.left_col * width,
@@ -108,7 +110,7 @@ class App extends React.Component {
   render() {
     const { isSignedIn, route, imgUrl, box, input } = this.state;
     const { name, entries } = this.state.user;
-    console.log(route);
+
     return (
       <div className='App'>
         <Particles className='particles' params={particlesParams} />
@@ -119,7 +121,7 @@ class App extends React.Component {
             isSignedIn={isSignedIn}
           />
         </div>
-        <div className={route !== "home" ? "logo-form-wrap" : "content-wrap"}>
+        <div className={route !== "home" ? "logoFormWrap" : "contentWrap"}>
           {route !== "home" ? <Logo /> : null}
           {route !== "home" ? (
             route === "signin" || route === "signout" ? (
@@ -136,14 +138,12 @@ class App extends React.Component {
           ) : (
             <React.Fragment>
               <Rank name={name} entries={entries} />
-              <div>
-                <ImageLinkForm
-                  onInputChange={this.onInputChange}
-                  onPictureSubmit={this.onPictureSubmit}
-                  value={input}
-                />
-                <FaceRecognition imgUrl={imgUrl} box={box} />
-              </div>
+              <ImageLinkForm
+                onInputChange={this.onInputChange}
+                onPictureSubmit={this.onPictureSubmit}
+                value={input}
+              />
+              <FaceRecognition imgUrl={imgUrl} box={box} />
             </React.Fragment>
           )}
         </div>

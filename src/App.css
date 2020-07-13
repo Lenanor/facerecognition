@@ -1,3 +1,9 @@
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus {
+  outline: none;
+}
 .App {
   text-align: center;
 }
@@ -21,7 +27,12 @@
   flex-direction: row;
 }
 
-.logo-form-wrap {
+.contentWrap {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.logoFormWrap {
   align-items: center;
   display: -webkit-box;
   display: -moz-box;
@@ -29,49 +40,39 @@
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
-  height: 85vh;
   justify-content: center;
   margin: 0 auto;
-  width: 70vw;
+  max-width: 85vw;
+  height: 90vh;
+}
+
+.logoFormWrap .Tilt {
+  text-align: center;
 }
 
 .flexItem {
-  width: 85vw;
+  width: 100%;
   margin: 5px;
 }
 
-@media (orientation: landscape) {
-  .logo-form-wrap {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  .flexItem {
-    width: 35vw;
+@media only screen and (max-height: 414px) {
+  .logoFormWrap {
+    height: auto;
   }
 }
 
 @media only screen and (min-width: 767px) {
-  .logo-form-wrap {
-    height: 85vh;
-  }
-  .flexItem {
-    width: 65vw;
+  .logoFormWrap {
+    max-width: 65vw;
   }
 }
 
 @media only screen and (min-width: 1025px) {
-  .logo-form-wrap {
-    align-items: center;
-    display: flex;
+  .logoFormWrap {
     flex-direction: row;
-    justify-content: center;
-    height: 85vh;
   }
 
-  .flexItem {
-    min-height: 300px;
-    width: 35vw;
+  .logoFormWrap .Tilt {
+    text-align: left;
   }
 }

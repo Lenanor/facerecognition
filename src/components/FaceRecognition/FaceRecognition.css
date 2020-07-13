@@ -2,14 +2,9 @@
   display: flex;
   justify-content: center;
 }
+
 .photoWrapper {
   position: absolute;
-}
-
-#faceRecognitionPhoto {
-  width: 450px;
-  height: auto;
-  margin-top: 50px;
 }
 
 .boundingBox {

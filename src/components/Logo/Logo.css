@@ -5,12 +5,22 @@
   min-height: 146px;
 }
 
-@media only screen and (min-width: 1025px) {
-  .monkeyLogo {
+.Tilt {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+@media only screen and (min-width: 668px) {
+  .logoFormWrap .Tilt-inner .monkeyLogo {
+    width: 220px;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .logoFormWrap .Tilt-inner .monkeyLogo {
     width: 280px;
   }
   .home .monkeyLogo {
     width: 146px;
-    text-align: start;
   }
 }

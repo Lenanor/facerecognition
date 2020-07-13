@@ -61,7 +61,9 @@ class SignIn extends Component {
               />
             </div>
             <div className={styles.inputWrap}>
-              <label htmlFor='password'>Lösenord</label>
+              <label className={styles.label} htmlFor='password'>
+                Lösenord
+              </label>
               <input
                 className={styles.textInput}
                 type='password'
@@ -85,12 +87,12 @@ class SignIn extends Component {
             />
           </div>
           <div className={styles.signinTextWrap}>
-            <p
-              className={styles.signinText}
+            <button
+              className={styles.submitButton}
               onClick={() => onRouteChange("register")}
             >
-              Skapa nytt konto
-            </p>
+              Skapa konto
+            </button>
           </div>
         </main>
       </article>
